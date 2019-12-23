@@ -220,40 +220,28 @@ public class DateUtil {
 		}
 		
 		
-		/** 随机一个时间  param:int类型的年份，随机日期在该年份之后*/
-		public static Date getRandomDate(int year){
-			Calendar now = Calendar.getInstance();
-			int nowYear = now.get(Calendar.YEAR);
-			int nowMouth = now.get(Calendar.MONTH)+1;
-			int nowDay = now.get(Calendar.DATE);
-			
-			Random rd = new Random();
-			int newYear = rd.nextInt(nowYear - year+1)+year;
-			int newMonth = 0;
-			if(newYear == year){
-				newMonth = rd.nextInt(nowMouth);
-			}else{
-				newMonth = rd.nextInt(13);
-			}
-			//newMonth = newMonth==0?newMonth+1:newMonth;
-			int newDay = 0;
-			if(newYear == year && newMonth==nowMouth){
-				newDay = rd.nextInt(nowDay+1);
-			}else{
-				if(newMonth!=4){
-					newDay = rd.nextInt(31);
-				}else{
-					newDay = rd.nextInt(29);
-				}
-			}
-			newDay = newDay==0?newDay+1:newDay;
-			Date date = new Date(rd.nextInt(1000*60*60*24));
-			now.setTime(date);
-			now.set(newYear, newMonth, newDay);
-			return now.getTime();
+		/** 随机一个时间  param:int类型的年份，随机日期在该年份之后
+		 * @throws ParseException */
+		public static Date getRandomDate(int year,String str) throws ParseException{
+				Calendar now = Calendar.getInstance();
+				int nowYear = now.get(Calendar.YEAR);
+				int nowMouth = now.get(Calendar.MONTH)+1;
+				int nowDay = now.get(Calendar.DATE);
+
+				Calendar calendar = DateUtil.stringToCalendar(str);
+				
+				calendar.set(Calendar.YEAR, year+(int)(Math.random()*(nowYear-year)+1));
+				
+				return calendar.getTime();
+				
+
+		}
+
+		public static Date getRandomDate() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	
-		
 }
 
 

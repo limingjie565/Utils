@@ -116,7 +116,7 @@ public class StringUtil {
 		StringBuffer result = new StringBuffer();
 		char[] words = {'1','2','3','4','5','6','7','8','9','0'};
 		for(int i = 0 ; i < length ; i++){
-			int index = random.nextInt(36);
+			int index = random.nextInt(10);
 			String word = words[index] + "";
 			if(!StringUtil.isNumber(word)){
 				int bigorsmall = random.nextInt();
@@ -201,7 +201,7 @@ public class StringUtil {
 	 * @param end
 	 * @return
 	 */
-	public Integer RandomUtil(Integer start, Integer end) {
+	public static Integer RandomUtil(Integer start, Integer end) {
 		Integer num = 0;
 		while (true) {
 			Integer endm = (int) (Math.random() * end + 1);
@@ -215,8 +215,13 @@ public class StringUtil {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(getAChinese(3));
+		int names = random(20,40);
+		System.out.println(getAChinese(names+20));
 		
+	}
+	private static int random(int i, int j) {
+		Integer sum = (int)Math.random()*i+1;
+		return sum;
 	}
 	
 }
