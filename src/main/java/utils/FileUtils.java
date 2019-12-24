@@ -1,8 +1,6 @@
 package utils;
 
 import java.io.File;
-import java.math.RoundingMode;
-import java.text.NumberFormat;
 
 public class FileUtils {
 	/***
@@ -53,34 +51,34 @@ public class FileUtils {
 		return property;
 	}
 
-	public static String getFileSize(String path,String unit) {
-		File file = new File(path);
-		long leng = file.length();
-		double length = leng;
-		double size = 0;
-
-		switch (unit) {
-		case "K":
-			size = length/1024;
-			break;
-		case "M":
-			size = length/1024/1024;
-			break;
-		case "G":
-			size = length/1024/1024/1024;
-			break;
-		default:
-			size = length;
-			break;
-		}
-		NumberFormat data=NumberFormat.getNumberInstance();
-		//保留两位小数
-		data.setMaximumFractionDigits(4);
-		// 如果不需要四舍五入，可以使用RoundingMode.DOWN
-		data.setRoundingMode(RoundingMode.UP);
-
-		String format = data.format(size);
-		return format + unit;
-	}
+//	public static String getFileSize(String path,String unit) {
+//		File file = new File(path);
+//		long leng = file.length();
+//		double length = leng;
+//		double size = 0;
+//
+//		switch (unit) {
+//		case "K":
+//			size = length/1024;
+//			break;
+//		case "M":
+//			size = length/1024/1024;
+//			break;
+//		case "G":
+//			size = length/1024/1024/1024;
+//			break;
+//		default:
+//			size = length;
+//			break;
+//		}
+//		NumberFormat data=NumberFormat.getNumberInstance();
+//		//保留两位小数
+//		data.setMaximumFractionDigits(4);
+//		// 如果不需要四舍五入，可以使用RoundingMode.DOWN
+//		data.setRoundingMode(RoundingMode.UP);
+//
+//		String format = data.format(size);
+//		return format + unit;
+//	}
 
 }
